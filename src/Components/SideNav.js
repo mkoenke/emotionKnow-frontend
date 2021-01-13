@@ -1,11 +1,19 @@
 import M from "materialize-css/dist/js/materialize.min.js"
 import React from "react"
+import { NavLink } from "react-router-dom"
 
 class SideNav extends React.Component {
   componentDidMount() {
     let sidenav = document.querySelector("#slide-out")
     M.Sidenav.init(sidenav, {})
+    var elems = document.querySelectorAll(".modal")
+    M.Modal.init(elems)
   }
+
+  //   componentDidMount() {
+  //     var elems = document.querySelectorAll(".modal")
+  //     M.Modal.init(elems)
+  //   }
   render() {
     return (
       <>
@@ -15,24 +23,31 @@ class SideNav extends React.Component {
               <div class="background">
                 <img src="images/office.jpg" />
               </div>
-              <a href="#user">
+              <NavLink to="/">
                 <img class="circle" src="images/yuna.jpg" />
-              </a>
-              <a href="#name">
+              </NavLink>
+              <NavLink to="/">
                 <span class="white-text name">John Doe</span>
-              </a>
-              <a href="#email">
+              </NavLink>
+              <NavLink to="/">
                 <span class="white-text email">jdandturk@gmail.com</span>
-              </a>
+              </NavLink>
             </div>
           </li>
           <li>
-            <a href="#!">
-              <i class="material-icons">cloud</i>First Link With Icon
-            </a>
+            <NavLink
+              class="waves-effect"
+              to="/webcam"
+              data-target="modal1"
+              class="btn modal-trigger"
+            >
+              Record a Video Journal
+            </NavLink>
           </li>
           <li>
-            <a href="#!">Second Link</a>
+            <NavLink class="waves-effect" to="/">
+              Second Link With Waves
+            </NavLink>
           </li>
           <li>
             <div class="divider"></div>
@@ -41,14 +56,11 @@ class SideNav extends React.Component {
             <a class="subheader">Subheader</a>
           </li>
           <li>
-            <a class="waves-effect" href="#!">
+            <NavLink class="waves-effect" to="/">
               Third Link With Waves
-            </a>
+            </NavLink>
           </li>
         </ul>
-        <a href="#" data-target="slide-out" class="sidenav-trigger">
-          <i class="material-icons">menu</i>
-        </a>
       </>
     )
   }
