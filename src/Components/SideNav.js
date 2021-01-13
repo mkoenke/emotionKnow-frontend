@@ -6,14 +6,8 @@ class SideNav extends React.Component {
   componentDidMount() {
     let sidenav = document.querySelector("#slide-out")
     M.Sidenav.init(sidenav, {})
-    var elems = document.querySelectorAll(".modal")
-    M.Modal.init(elems)
   }
 
-  //   componentDidMount() {
-  //     var elems = document.querySelectorAll(".modal")
-  //     M.Modal.init(elems)
-  //   }
   render() {
     return (
       <>
