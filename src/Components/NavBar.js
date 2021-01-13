@@ -26,7 +26,7 @@ class NavBar extends React.Component {
                 <NavLink to="/">Home</NavLink>
               </li>
               <li>
-                <NavLink to="/">About</NavLink>
+                <NavLink to="/">Log In</NavLink>
               </li>
             </ul>
           </div>

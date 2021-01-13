@@ -11,7 +11,6 @@ function App() {
     <>
       <NavBar />
       <Switch>
-        {/* <Route path="/webcam" component={WebCam} /> */}
         <Route path="/webcam" component={CameraPage} />
         <Route path="/" component={Homepage} />
       </Switch>
