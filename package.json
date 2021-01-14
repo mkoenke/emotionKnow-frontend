@@ -15,7 +15,9 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "react-webcam": "^5.2.2",
+    "recordrtc": "^5.6.1",
     "redux": "^4.0.5",
+    "videojs-record": "^4.1.1",
     "web-vitals": "^0.2.4"
   },
   "scripts": {

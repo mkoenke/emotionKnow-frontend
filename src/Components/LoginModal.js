@@ -2,11 +2,10 @@ import "materialize-css/dist/css/materialize.min.css"
 import M from "materialize-css/dist/js/materialize.min.js"
 import React, { Component } from "react"
 
-class SignUpModal extends Component {
+class LogInModal extends Component {
   state = {
     username: "",
     password: "",
-    email: "",
   }
   componentDidMount() {
     const options = {
@@ -29,10 +28,15 @@ class SignUpModal extends Component {
       startingTop: "4%",
       endingTop: "10%",
     }
-    M.Modal.init(this.Modal, options)
-
+    M.Modal.init(this.Modal)
+    // let elem = document.querySelector(".modal")
     let instance = M.Modal.getInstance(this.Modal)
     instance.open()
+
+    // let instance = M.Modal.getInstance(this.Modal)
+    // instance.open();
+    // instance.close()
+    // instance.destroy();
   }
   handleFormChange = (e) => {
     this.setState({ [e.target.name]: e.target.value })
@@ -40,48 +44,16 @@ class SignUpModal extends Component {
 
   handleClose = () => {
     console.log("Close")
-    this.props.handleSignUpClick()
+    this.props.handleLoginClick()
     let instance = M.Modal.getInstance(this.Modal)
     instance.close()
   }
-  handleSignUp = (e) => {
-    console.log("Sign up")
-    let parentData = {
-      email: e.target.email,
-    }
-    fetch("https://localhost3000/parents", {
-      method: "POST", // or 'PUT'
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(parentData),
-    })
-      .then((response) => response.json())
-      .then((returnedParentObj) => {
-        console.log("Success new parent:", returnedParentObj)
-        let childData = {
-          username: e.target.username,
-          password: e.target.password,
-          parent_id: returnedParentObj.id,
-        }
-        fetch("https://localhost3000/children", {
-          method: "POST", // or 'PUT'
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(childData),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            console.log("Success:", data)
-          })
-          .catch((error) => {
-            console.error("Error:", error)
-          })
-      })
-      .catch((error) => {
-        console.error("Error:", error)
-      })
+  handleLogIn = (e) => {
+    console.log("Log In")
+    this.props.handleLoginClick()
+    /// fetch child from db
+    //fetch child's journal entries from db
+    //fetch child's reports from db
   }
 
   render() {
@@ -95,10 +67,13 @@ class SignUpModal extends Component {
           id="modal1"
           className="modal"
         >
-          <div className="modal-content">
+          <div
+            className="modal-content"
+            style={{ color: "rgb(171, 218, 225)" }}
+          >
             <h4>Welcome!</h4>
             <div class="row">
-              <form class="col s12" onSubmit={this.handleSignUp}>
+              <form class="col s12" onSubmit={this.handleLogIn}>
                 <div class="row">
                   <div class="input-field col s6">
                     <i class="material-icons prefix">account_circle</i>
@@ -126,26 +101,13 @@ class SignUpModal extends Component {
                     />
                     <label for="icon_password">Password</label>
                   </div>
-                  <div class="input-field col s6">
-                    <i class="material-icons prefix">email</i>
-                    <input
-                      required
-                      id="icon_email"
-                      type="email"
-                      class="validate"
-                      name="email"
-                      value={this.state.email}
-                      onChange={this.handleFormChange}
-                    />
-                    <label for="icon_email">Parent's Email</label>
-                  </div>
                 </div>
                 <div className="modal-footer">
                   <button
                     className="modal-close waves-effect btn-flat"
-                    onClick={this.handleSignUp}
+                    onClick={this.handleLogIn}
                   >
-                    Sign Up
+                    Log In
                   </button>
                   <button
                     className="modal-close waves-effect btn-flat"
@@ -157,24 +119,10 @@ class SignUpModal extends Component {
               </form>
             </div>
           </div>
-          {/* <div className="modal-footer">
-            <a
-              className="modal-close waves-effect btn-flat"
-              onClick={(e) => this.handleSignUp(e)}
-            >
-              Sign Up
-            </a>
-            <a
-              className="modal-close waves-effect btn-flat"
-              onClick={this.handleClose}
-            >
-              Cancel
-            </a>
-          </div> */}
         </div>
       </div>
     )
   }
 }
 
-export default SignUpModal
+export default LogInModal

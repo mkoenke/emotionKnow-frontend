@@ -1,7 +1,7 @@
 import React from "react"
 import Webcam from "react-webcam"
 
-class WebCam extends React.Component {
+class WebCamRecorder extends React.Component {
   state = {
     webcamVideo: "",
     webcamPreview: true,
@@ -36,4 +36,4 @@ class WebCam extends React.Component {
   }
 }
 
-export default WebCam
+export default WebCamRecorder

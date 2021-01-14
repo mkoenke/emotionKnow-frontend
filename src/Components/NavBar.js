@@ -1,12 +1,21 @@
 import M from "materialize-css/dist/js/materialize.min.js"
 import React from "react"
 import { NavLink } from "react-router-dom"
+import LoginModal from "./LoginModal"
 import SideNav from "./SideNav"
 
 class NavBar extends React.Component {
+  state = {
+    modalView: false,
+  }
   componentDidMount() {
     let sidenav = document.querySelector("#slide-out")
     M.Sidenav.init(sidenav, {})
+  }
+
+  handleLoginClick = () => {
+    console.log("Login clicked")
+    this.setState({ modalView: !this.state.modalView })
   }
 
   render() {
@@ -26,7 +35,10 @@ class NavBar extends React.Component {
                 <NavLink to="/">Home</NavLink>
               </li>
               <li>
-                <NavLink to="/">Log In</NavLink>
+                <div onClick={this.handleLoginClick}>Log In</div>
+                {this.state.modalView && (
+                  <LoginModal handleLoginClick={this.handleLoginClick} />
+                )}
               </li>
             </ul>
           </div>

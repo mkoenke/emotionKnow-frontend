@@ -6,23 +6,20 @@ import Background3 from "../assets/images/background3mod5.jpeg"
 import SignUpModal from "../Components/SignUpModal"
 
 class Homepage extends React.Component {
+  state = {
+    modalView: false,
+  }
   componentDidMount() {
     let elems = document.querySelectorAll(".parallax")
     M.Parallax.init(elems)
   }
 
   handleSignUpClick = () => {
-    let elem = document.querySelector(".modal")
-    let instance = M.Modal.getInstance(elem)
-    instance.open()
-  }
-  handleClose = () => {
-    let elem = document.querySelector(".modal")
-    let instance = M.Modal.getInstance(elem)
-    instance.close()
+    this.setState({ modalView: !this.state.modalView })
   }
 
   render() {
+    console.log(this.state.modalView)
     return (
       <>
         <div className="parallax-container">
@@ -50,16 +47,13 @@ class Homepage extends React.Component {
             <h2
               className="header"
               style={{ color: "rgb(171, 218, 225)" }}
-              //   data-target="modal1"
-              //   class="btn modal-trigger"
               onClick={this.handleSignUpClick}
             >
               Sign Up!
-              <SignUpModal handleClose={this.handleClose} />
+              {this.state.modalView && (
+                <SignUpModal handleSignUpClick={this.handleSignUpClick} />
+              )}
             </h2>
-            {/* <p className="grey-text text-darken-3 lighten-3">
-              This is a little description about the website!
-            </p> */}
           </div>
         </div>
         <div className="parallax-container">
