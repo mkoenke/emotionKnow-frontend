@@ -40,12 +40,13 @@ class SignUpModal extends Component {
 
   handleClose = () => {
     console.log("Close")
-    this.props.handleSignUpClick()
+    this.props.setViewModalStateToFalse()
     let instance = M.Modal.getInstance(this.Modal)
     instance.close()
   }
   handleSignUp = (e) => {
     console.log("Sign up")
+    this.props.setViewModalStateToFalse()
     let parentData = {
       email: e.target.email,
     }
@@ -150,6 +151,7 @@ class SignUpModal extends Component {
                   <button
                     className="modal-close waves-effect btn-flat"
                     onClick={this.handleClose}
+                    style={{ border: "solid" }}
                   >
                     Cancel
                   </button>
@@ -157,20 +159,6 @@ class SignUpModal extends Component {
               </form>
             </div>
           </div>
-          {/* <div className="modal-footer">
-            <a
-              className="modal-close waves-effect btn-flat"
-              onClick={(e) => this.handleSignUp(e)}
-            >
-              Sign Up
-            </a>
-            <a
-              className="modal-close waves-effect btn-flat"
-              onClick={this.handleClose}
-            >
-              Cancel
-            </a>
-          </div> */}
         </div>
       </div>
     )

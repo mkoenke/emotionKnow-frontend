@@ -1,6 +1,8 @@
 import M from "materialize-css/dist/js/materialize.min.js"
 import React from "react"
+import { connect } from "react-redux"
 import { NavLink } from "react-router-dom"
+import { logIn } from "../Redux/actions"
 import LoginModal from "./LoginModal"
 import SideNav from "./SideNav"
 
@@ -9,6 +11,7 @@ class NavBar extends React.Component {
     modalView: false,
   }
   componentDidMount() {
+    this.props.submitHandler(undefined)
     let sidenav = document.querySelector("#slide-out")
     M.Sidenav.init(sidenav, {})
   }
@@ -49,4 +52,8 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar
+const mdp = (dispatch) => ({
+  submitHandler: (userObj) => dispatch(logIn(userObj)),
+})
+
+export default connect(null, mdp)(NavBar)

@@ -12,7 +12,13 @@ class VideoRecorder extends React.Component {
               <p>{status}</p>
               <button onClick={startRecording}>Start Recording</button>
               <button onClick={stopRecording}>Stop Recording</button>
-              <video src={mediaBlobUrl} controls autoplay loop />
+              <video
+                src={mediaBlobUrl}
+                controls
+                autoplay
+                heigh="720"
+                width="1280"
+              />
             </div>
           )}
         />

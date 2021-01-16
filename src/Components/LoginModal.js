@@ -29,14 +29,8 @@ class LogInModal extends Component {
       endingTop: "10%",
     }
     M.Modal.init(this.Modal)
-    // let elem = document.querySelector(".modal")
     let instance = M.Modal.getInstance(this.Modal)
     instance.open()
-
-    // let instance = M.Modal.getInstance(this.Modal)
-    // instance.open();
-    // instance.close()
-    // instance.destroy();
   }
   handleFormChange = (e) => {
     this.setState({ [e.target.name]: e.target.value })

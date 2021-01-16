@@ -15,7 +15,15 @@ class Homepage extends React.Component {
   }
 
   handleSignUpClick = () => {
-    this.setState({ modalView: !this.state.modalView })
+    if (!this.state.modalView) {
+      this.setState({ modalView: true })
+    }
+  }
+
+  setViewModalStateToFalse = () => {
+    if (this.state.modalView) {
+      this.setState({ modalView: false })
+    }
   }
 
   render() {
@@ -51,7 +59,9 @@ class Homepage extends React.Component {
             >
               Sign Up!
               {this.state.modalView && (
-                <SignUpModal handleSignUpClick={this.handleSignUpClick} />
+                <SignUpModal
+                  setViewModalStateToFalse={this.setViewModalStateToFalse}
+                />
               )}
             </h2>
           </div>

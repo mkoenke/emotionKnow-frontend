@@ -1,15 +1,17 @@
 import React from "react"
-import WebCamRecorder from "../Components/WebCam"
+// import VideoJSRecord from "../Components/VideoJSRecord"
+import RecordView from "../Components/ReactMediaRecorder"
 // import Recorder from "../Components/RecordRTC"
 // import VideoRecorder from "../Components/VideoRecorder"
-// import VideoJSRecord from "../Components/VideoJSRecord"
+// import WebCamRecorder from "../Components/WebCam"
 
 class CameraPage extends React.Component {
   render() {
     return (
       <>
         <h1>Camera Page</h1>
-        <WebCamRecorder />
+        {/* <WebCamRecorder /> */}
+        <RecordView />
         {/* <VideoRecorder /> */}
 
         {/* <VideoJSRecord /> */}

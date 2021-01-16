@@ -2,7 +2,8 @@ import React from "react"
 import ReactDOM from "react-dom"
 import { Provider } from "react-redux"
 import { BrowserRouter } from "react-router-dom"
-import { createStore } from "redux"
+import { applyMiddleware, createStore } from "redux"
+import thunk from "redux-thunk"
 import App from "./App"
 import "./index.css"
 import rootReducer from "./Redux/rootReducer"
@@ -10,7 +11,8 @@ import reportWebVitals from "./reportWebVitals"
 
 const store = createStore(
   rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  applyMiddleware(thunk)
+  // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
 ReactDOM.render(
